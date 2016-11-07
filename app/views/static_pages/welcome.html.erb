@@ -1,0 +1,10 @@
+<h2>Let's create a Rose Chart!</h2>
+
+<p>Currently we can only process files that are Gedcom files.</p>
+
+<p>
+  <%= form_tag({action: :welcome}, multipart: true) do %>
+    <p><%= file_field_tag 'gedcom' %>
+    <p><%= submit_tag %>
+    <% end %>
+</p>
