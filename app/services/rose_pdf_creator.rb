@@ -43,8 +43,9 @@ class RosePdfCreator
       end
     end
     # Render the prepared @document
-    doc.render_file("public/downloads/Test2.pdf")
-
+    url = generate_url
+    doc.render_file(url)
+    url
   end
 
   def calculate_max_font(gen, name)
@@ -159,4 +160,13 @@ class RosePdfCreator
     end
   end
 
+  private
+
+  def generate_url
+    "public/downloads/chart_#{generate_unique_id}.pdf"
+  end
+
+  def generate_unique_id
+    Digest::SHA1.hexdigest(people.flatten.join + id_1 + id_2)[0..3]
+  end
 end
